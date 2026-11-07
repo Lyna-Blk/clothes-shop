@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="Stylesheet" href="index.css" >
+ 
+</head>
+<body>
+  <header> 
+    <!--titre du site-->
+   <h1> MHL Collection</h1> 
+   
+   <!--lien des autres sites-->
+   <nav>
+       <ul>
+           <li><a href="index.html" class="menu-btn">Home</a></li>
+           <li><a href="product.html" class="menu-btn">Our Products</a></li>
+           <li><a href="#" id="cart-button" class="menu-btn">Shopping Cart </a></li>
+           <li><a href="checkout1.html" class="menu-btn">Checkout</a></li>
+           <li><a href="connexion.html" class="menu-btn">connexion</a></li>
+         
+       </ul>
+   </nav>
+  
+  <!--recherche-->
+   <div class="search-container">
+   </header> 
+    <body>
+    
+      <div class="text-box">
+            <h2>Welcome Back!</h2>
+            <button onclick="showForm('login')">Login</button>
+            <button onclick="showForm('signup')">Sign Up</button>
+    
+            <div id="login-form" class="form-container">
+                <h2>Login</h2>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <a href="index.html">
+                <button onclick="login()">Login</button>
+            </a>
+            </div>
+    
+            <div id="signup-form" class="form-container">
+                <h2>Sign Up</h2>
+                <input type="text" id="first-name" placeholder="First Name" required>
+                <input type="text" id="last-name" placeholder="Last Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="tel" id="phone" placeholder="Phone number" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button onclick="signup()">Create The Account</button>
+                <button onclick="updateAccount()">Update</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        //show icons
+        function showForm(formType) {
+            document.getElementById("login-form").style.display = formType === 'login' ? 'block' : 'none';
+          document.getElementById("signup-form").style.display = formType === 'signup' ? 'block' : 'none';
+
+          if (formType === 'signup') {
+    const email = localStorage.getItem("currentUser");
+    if (email) {
+        const user = JSON.parse(localStorage.getItem(email));
+        document.getElementById('first-name').value = user.firstName;
+        document.getElementById('last-name').value = user.lastName;
+        document.getElementById('signup-email').value = user.email;
+        document.getElementById('signup-email').disabled = true;
+        document.getElementById('phone').value = user.phone;
+        document.getElementById('signup-password').value = '';
+    }
+}
+        }
+    //securise mtps
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+    //signup +passwrd
+        async function signup() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const phone = document.getElementById('phone').value;
+    
+            if (!email || !password || !firstName || !lastName || !phone) {
+                alert("Please fill in all fields.");
+                return;
+            }
+    
+            const hashedPassword = await hashPassword(password);
+            const userData = {
+                firstName,
+                lastName,
+                email,
+                phone,
+                password: hashedPassword
+            };
+    
+            localStorage.setItem(email, JSON.stringify(userData));
+            alert("Account created successfully!");
+        }
+    //login +passwrd
+        async function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+    
+            const storedData = localStorage.getItem(email);
+            if (!storedData) {
+                alert("Account not found.");
+                return;
+            }
+    
+            const user = JSON.parse(storedData);
+            const hashedInput = await hashPassword(password);
+    
+            if (hashedInput === user.password) {
+                alert(`Welcome, ${user.firstName} ${user.lastName}!`);
+                localStorage.setItem("currentUser", email); // ✅ حفظ المستخدم الحالي
+                // هنا يمكنك التوجيه إلى صفحة profile.html مثلًا
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+    //update
+        function updateAccount() {
+            alert("خاصية التحديث ليست مفعّلة بعد.");
+        }
+        async function updateAccount() {
+    const email = localStorage.getItem("currentUser");
+    if (!email) {
+        alert("No user is logged in.");
+        return;
+    }
+
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const phone = document.getElementById('phone').value;
+    const password = document.getElementById('signup-password').value;
+
+    let user = JSON.parse(localStorage.getItem(email));
+    if (!user) {
+        alert("User not found.");
+        return;
+    }
+
+    // تحديث كلمة السر فقط إذا تم إدخالها
+    if (password.trim()) {
+        user.password = await hashPassword(password);
+    }
+
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.phone = phone;
+
+    localStorage.setItem(email, JSON.stringify(user));
+    alert("Account updated successfully!");
+}
+    </script>
+
+</body>
+</html>

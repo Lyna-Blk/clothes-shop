@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>>MHL Collection - Checkout</title>
+    <link rel="stylesheet" href="index.css"> <!-- ربط ملف CSS -->
+</head>
+
+<body> 
+    <!--la tete de la page-->
+    <header> 
+    <h1> MHL Collection</h1> 
+    <!--lien des autres page-->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="menu-btn">Home</a></li>
+            <li><a href="product.html" class="menu-btn">Our Products</a></li>
+            <li><a href="#" id="cart-button" class="menu-btn">Shopping Cart </a></li>
+            <li><a href="checkout.html" class="menu-btn">Checkout</a></li>
+            <li><a href="connexion.html" class="menu-btn">connexion</a></li>
+        </ul>
+    </nav>
+<!--barre de recherche-->
+    <div class="search-container"></div>
+</header>
+
+<main>
+    <h2>Checkout</h2>
+    <!--namodaj slak-->
+    <div class="checkout-container">
+        <!--information client-->
+        <form id="checkout-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!--adress-->
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <!--mode payement-->
+            <label for="payment">Payment Method:</label>
+            <select id="payment" name="payment" required>
+                <option value="">Select a payment method</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="cash_on_delivery">Cash on Delivery</option>
+            </select>
+
+            <!--boutton confirmation commande-->
+            <button type="submit">Place Order</button>
+        </div>
+        </form>
+        </main>
+        <!--ho9o9 nachr-->
+        <footer> 
+            <p>&copy; 2025 MHL Collection. All rights reserved.</p> 
+            </footer> 
+
+    <script src="script.js"></script> <!-- ربط ملف JavaScript -->
+</body>
+</html>

@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    .text-box {
+    text-align:center; /*lktiba win blassa nhtoha*/
+    font-family: "Dancing Script", cursive;/*yhadd naw3 ecriture*/
+    font-style: italic;/*yrj3ou mayl*/
+    font-weight: bold;/*l3ord t3 5at*/
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);/*ظل l5at*/
+    }
+    /* عام */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      color: #4e4b3b; /* بني داكن */
+    }
+
+    nav {
+      margin-bottom: 20px;
+      background-color: #d6c8a9; /* بيج فاتح */
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background-color: #a68c5b; /* بني فاتح */
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #8f7b5d; /* بني غامق */
+    }
+
+    section {
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* الجداول - تصميم مميز */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(166, 140, 91, 0.3);
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    table:hover {
+      transform: scale(1.01);
+    }
+
+    th, td {
+      padding: 14px 12px;
+      text-align: center;
+      border-bottom: 1px solid #e5ddc5;
+      font-size: 16px;
+    }
+
+    th {
+      background: linear-gradient(to right, #a68c5b, #8f7b5d);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      background-color: #fbf9f4;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f4f1e9;
+    }
+
+    td img {
+      max-height: 50px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    td button {
+      background-color: #a68c5b;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      margin: 2px;
+      color: white;
+    }
+
+    td button:hover {
+      background-color: #8f7b5d;
+    }
+
+    /* حقول الإدخال */
+    input {
+      margin: 5px 0;
+      padding: 10px;
+      width: 250px;
+      display: block;
+      border-radius: 5px;
+      border: 1px solid #d6c8a9;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #a68c5b;
+    }
+
+    /* تنسيق النصوص */
+    li {
+      font-size: 18px;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div class="text-box">
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  <nav>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('products')">Manage Products</button>
+    <button onclick="showSection('orders')">Manage Orders</button>
+    <button onclick="showSection('users')">Manage Users</button>
+  </nav>
+
+  <!-- Dashboard -->
+  <section id="dashboard">
+    <h2>Dashboard Overview</h2>
+    <ul>
+      <li id="totalProducts">Total Products: 0</li>
+      <li>Total Orders: 1</li>
+      <li>Total Users: 1</li>
+    </ul>
+  </section>
+
+  <!-- Product Management -->
+  <section id="products">
+    <h2>Manage Products</h2>
+
+    <h3>Add New Product</h3>
+    <input type="text" id="productName" placeholder="Name">
+    <input type="text" id="productCategory" placeholder="Category">
+    <input type="number" id="productPrice" placeholder="Price">
+    <input type="number" id="productStock" placeholder="Stock Quantity">
+    <input type="text" id="productDescription" placeholder="Description">
+    <input type="text" id="productImage" placeholder="Image URL">
+    <button onclick="addProduct()">Add Product</button>
+
+
+<h3>Product List</h3>
+    <table id="productsTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Orders -->
+  <section id="orders">
+    <h2>Manage Orders</h2>
+    <table>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>1001</td>
+        <td>sara</td>
+        <td>Pending</td>
+        <td>
+          <button onclick="alert('Update Order Status')">Update</button>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Users -->
+  <section id="users">
+    <h2>Manage Users</h2>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>amina123</td>
+        <td>Client</td>
+        <td>
+          <button onclick="alert('Edit User')">Edit</button>
+          <button onclick="confirmDelete('User')">Block</button>
+        </td>
+      </tr>
+    </table>
+  </section>
+</div>
+</div>
+<script>
+  const products = [];
+
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => section.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
+  }
+
+  showSection('dashboard');
+
+  function addProduct() {
+    const name = document.getElementById('productName').value.trim();
+    const category = document.getElementById('productCategory').value.trim();
+    const price = document.getElementById('productPrice').value.trim();
+    const stock = document.getElementById('productStock').value.trim();
+    const description = document.getElementById('productDescription').value.trim();
+    const image = document.getElementById('productImage').value.trim();
+
+    if (name && category && price && stock && description) {
+      products.push({ name, category, price, stock, description, image });
+      renderProducts();
+      document.querySelectorAll('#products input').forEach(input => input.value = '');
+    } else {
+      alert("Please fill in all fields.");
+    }
+  }
+
+  function renderProducts() {
+    const tableBody = document.querySelector("#productsTable tbody");
+    tableBody.innerHTML = '';
+
+    products.forEach((product, index) => {
+      const row = `
+        <tr>
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>$${product.price}</td>
+          <td>${product.stock}</td>
+          <td>${product.description}</td>
+          <td><img src="${product.image}" alt="Image"></td>
+          <td>
+            <button onclick="editProduct(${index})">Edit</button>
+            <button onclick="confirmDelete('Product', ${index})">Delete</button>
+          </td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+
+    document.getElementById('totalProducts').textContent = "Total Products: " + products.length;
+  }
+
+  function editProduct(index) {
+    const p = products[index];
+    const newName = prompt("Name:", p.name);
+    const newCategory = prompt("Category:", p.category);
+    const newPrice = prompt("Price:", p.price);
+    const newStock = prompt("Stock Quantity:", p.stock);
+    const newDesc = prompt("Description:", p.description);
+    const newImg = prompt("Image URL:", p.image);
+
+    if (newName && newCategory && newPrice && newStock && newDesc) {
+      products[index] = {
+        name: newName,
+        category: newCategory,
+        price: newPrice,
+        stock: newStock,
+        description: newDesc,
+        image: newImg
+      };
+      renderProducts();
+    }
+  }
+
+  function confirmDelete(type, index = null) {
+    if (confirm(`Are you sure you want to delete this ${type}?`)) {
+      if (type === 'Product' && index !== null) {
+        products.splice(index, 1);
+        renderProducts();
+      } else {
+        alert(`${type} deleted successfully!`);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

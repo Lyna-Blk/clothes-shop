@@ -1,0 +1,201 @@
+<!-- Home Page --> 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+ <meta charset="UTF-8"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <title>MHL Collection - Home</title> 
+ <link rel="Stylesheet" href="index.css" >
+ 
+</head> 
+
+<body> 
+ <header> 
+  <!--titre du site-->
+ <h1> MHL Collection</h1> 
+ 
+ <!--lien des autres sites-->
+ <nav>
+     <ul>
+         <li><a href="index.html" class="menu-btn">Home</a></li>
+         <li><a href="product.html" class="menu-btn">Our Products</a></li>
+         <li><a href="#" id="cart-button" class="menu-btn">Shopping Cart </a></li>
+         <li><a href="checkout1.html" class="menu-btn">Checkout</a></li>
+         <li><a href="connexion.html" class="menu-btn">connexion</a></li>
+       
+     </ul>
+ </nav>
+
+<!--recherche-->
+ <div class="search-container">
+ </header> 
+
+ <main> 
+
+ <section > 
+
+ <!--filter button-->
+ <button id="filterBtn" class="filter-icon"> °=. Filter</button>
+
+ <!-- code fenetre filter -->
+ <div id="filterModal" class="modal">
+     <div class="modal-content">
+         <span class="close">&times;</span>
+         <h2>What Are You Looking For?</h2>
+   <!--les bouttons da5l filter-->
+         <div class="filter-tabs">
+             <button class="tab-btn active" data-tab="category"> Category📂 </button>
+             <button class="tab-btn" data-tab="price"> Price$</button>
+             <button class="tab-btn" data-tab="size">Size📏</button>
+         </div>
+
+         <!--contenue du filter-->
+         <!--category-->
+         <div id="category" class="tab-content active">
+             <label><input type="checkbox" value="ensemble"> Enssemble</label>
+             <label><input type="checkbox" value="costume"> Costume</label>
+             <label><input type="checkbox" value="robe"> Robe</label>
+             <label><input type="checkbox" value="shoes"> Shoes</label>
+             <label><input type="checkbox" value="bag"> Bag</label>
+         </div>
+        <!--price-->
+         <div id="price" class="tab-content">
+             <input type="range" min="0" max="10000" value="3000" class="price-range">
+             <p>Price: <span id="priceValue">3000</span> DA</p>
+         </div>
+         <!--size-->
+         <div id="size" class="tab-content">
+             <label><input type="radio" name="size" value="S"> S</label>
+             <label><input type="radio" name="size" value="M"> M</label>
+             <label><input type="radio" name="size" value="L"> L</label>
+             <label><input type="radio" name="size" value="XL"> XL</label>
+         </div>
+         <!--boutton ok filter -->
+         <button class="apply-filter-btn">Apply</button>
+     </div>
+ </div>
+ 
+  <!--msg tarhib -->
+<div class="text-box">
+    
+ <h2>Quality <span>Clothes</span>  For Every<span> Woman</span></h2> 
+</div>
+<!--img logo-->
+<img class="img" src="c:\Users\taj\Pictures\photo_2025-03-15_22-54-34.jpg" alt="Logo"> 
+
+<!--la barre li tthrk-->
+<div class="marquee">
+    <span>BIENVENUE DANS NOTRE BOUTIQUE EN LIGNE . TISSU DE QUALITE SUPERIEURE .  LIVRAISON 58 WILAYAS . </span>
+</div>
+
+<!--affiche produits-->
+ <h3>Discover Our New Collection </h3> 
+ <section class="collection">
+
+  <!--produit1-->
+    <div class="product">
+      <img src="https://i.pinimg.com/736x/fb/8b/11/fb8b11f23aa360f8bf5a01eaa4eca1af.jpg" alt="Product 1">
+      <p>Enssemble </p>
+      <br>
+      <h4>Enssemble Terra </h4>
+      <p class="price">Price:4900da</p>
+      <a href="product1.html" class="details-btn">Details</a>
+    </div>
+    </div>
+
+    <div class="product">
+      <img src="c:\Users\taj\Pictures\photo_2025-03-05_17-13-40.jpg" alt="Product 2">
+      <p>Costume </p>
+      <br>
+      <h4>Costume Chloe</h4>
+      <p class="price">Price: 5000DA</p>
+      <a href="product2.html" class="details-btn">Details</a>
+    </div>
+    
+    
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/bb/be/5f/bbbe5f7b708fd4b30015132e244e4515.jpg" alt="Product 3">
+        <p>Robe</p>
+        <br>
+        <h4>Robe Celena</h4>
+        <p class="price">Price: 4600DA</p>  
+        <a href="product3.html" class="details-btn">Details</a>
+      </div>
+
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/b5/b9/76/b5b976fa74c31b8244b8b9431cd38297.jpg" alt="Product 4">
+        <p>Shoes</p>
+        <br>
+        <h4>Nike Shoes </h4>
+        <p class="price">Price: 5500DA</p> 
+        <a href="product4.html" class="details-btn">Details</a> 
+      </div>
+
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/53/97/8c/53978cd6c38f4c614a89e16dc8b32148.jpg" alt="Product 5">
+        <p>Bag</p>
+        <br>
+        <h4>Dior Saddle Bag </h4>
+        <p class="price">Price: 4600DA</p>  
+        <a href="product5.html" class="details-btn">Details</a>
+      </div>
+
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/2e/44/d8/2e44d81b2875dcc1ac98f1fac7666723.jpg" alt="Product 6">
+        <p>Bag</p>
+        <br>
+        <h4>Saint Laurent Bag</h4>
+        <p class="price">Price: 4600DA</p>  
+        <a href="product6.html" class="details-btn">Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="c:\Users\taj\Pictures\photo_2025-03-05_17-03-47.jpg" alt="Product 7">
+      <p>Shoes</p>
+      <br>
+      <h4>ZARA Heels</h4>
+      <p class="price">Price: 4500DA</p>  
+      <a href="product7.html" class="details-btn">Details</a>
+    </div>
+
+      <div class="product">
+        <img src="https://i.pinimg.com/736x/ad/ed/65/aded6540f3079bbd20d6c1470cf7d970.jpg" alt="Product 8">
+        <p>Shoes</p>
+        <br>
+        <h4>Louboutin Heels</h4>
+        <p class="price">Price: 6800DA</p>  
+        <a href="product8.html" class="details-btn">Details</a>
+     </div> 
+  </section>
+
+<!-- shopping cart-->
+<div class="cart-overlay">
+    <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <button id="close-cart">✖️</button>
+    </div>
+    <!--ul t3 liste mch mratba-->
+    <ul class="cart-items"></ul>
+    <div class="cart-footer">
+        <p id="total-price">Total: 0 DA</p>
+        <a href="checkout1.html">
+        <button>Buying (:
+        </button>
+    </div>
+</div>
+
+<!--boutton discover-->
+  <a href="product.html" class="discover-btn">Discover More</a>
+ </section> 
+ </main> 
+
+ <!--ho9o9 nachr-->
+ <footer> 
+ <p>&copy; 2025 MHL Collection. All rights reserved.</p> 
+ <a href ="login_admin.html">admin dashboard</a>
+ </footer> 
+
+ <script src="script.js"></script>
+</body> 
+</html>  

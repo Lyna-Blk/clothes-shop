@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>admin login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:whitesmoke;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(100, 80, 50, 0.3), 0 6px 6px rgba(100, 80, 50, 0.22);
+      width: 320px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #5c4033;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #d3c5b1;
+      background-color: #fdfaf6;
+      box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease-in-out;
+    }
+
+    input[type="email"]:focus, input[type="password"]:focus {
+      border-color: #bfa17d;
+      outline: none;
+      box-shadow: 0 0 5px rgba(191, 161, 125, 0.5);
+    }
+
+    button {
+      width: 95%;
+      padding: 12px;
+      background-color: #8b5e3c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      box-shadow: 0 5px 10px rgba(139, 94, 60, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #a86c4c;
+      transform: translateY(-2px);
+    }
+
+    .error {
+      color: #c0392b;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>admin login  </h2>
+  <div id="error-message" class="error" style="display:none;"></div>
+  <form id="login-form">
+    <input type="email" id="email" name="email" placeholder="email " required><br>
+    <input type="password" id="password" name="password" placeholder="password " required><br>
+    <button type="submit">login</button>
+  </form>
+</div>
+
+<script>
+  const adminEmail = "admin@gmail.com";
+  const adminPassword = "1234";
+
+  document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const errorMessage = document.getElementById("error-message");
+
+    if (email === adminEmail && password === adminPassword) {
+      localStorage.setItem('admin_logged_in', 'true');
+      window.location.href = 'Adminn.html';
+    } else {
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "البريد الإلكتروني أو كلمة المرور غير صحيحة!";
+    }
+  });
+</script>
+
+</body>
+</html>

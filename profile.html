@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>User Profile</h2>
+    <input type="text" id="profileName" placeholder="Full Name"/>
+    <input type="email" id="profileEmail" placeholder="Email" disabled/>
+    <button onclick="updateProfile()">Update Profile</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!user) {
+      location.href = 'connexion.html';
+    }
+
+    document.getElementById('profileName').value = user.name;
+    document.getElementById('profileEmail').value = user.email;
+
+    function updateProfile() {
+      const name = document.getElementById('profileName').value;
+      user.name = name;
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const index = users.findIndex(u => u.email === user.email);
+      if (index !== -1) {
+        users[index].name = name;
+        localStorage.setItem('users', JSON.stringify(users));
+      }
+
+      alert('Profile updated.');
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      location.href = 'connexion.html';
+    }
+  </script>
+</body>
+</html>
